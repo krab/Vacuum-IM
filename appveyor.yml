@@ -1,6 +1,6 @@
 version: '1.3.0 {branch} build {build}'
 
-image: Visual Studio 2017
+image: Visual Studio 2019
 
 branches:
   only:
@@ -9,15 +9,16 @@ branches:
 skip_non_tags: true
 
 environment:
-  QTDIR: C:\Qt\5.13.2\msvc2017
-  QTVER: 5.13.2
+  QTDIR: C:\Qt\5.14.2\msvc2017
+  QTVER: 5.14.2
 
 init:
   - set PATH=%PATH%;%QTDIR%\bin
-  - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
+  - call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsall.bat" x86
   
 install:
   - curl -O -J -L -s -S http://download.qt.io/official_releases/jom/jom.zip & 7z x *.zip -oC:\jom > nul & del *.zip
+  - curl -O -J -L -s -S https://github.com/qtwebkit/qtwebkit/releases/download/qtwebkit-5.212.0-alpha4/qtwebkit-Windows-Windows_10-MSVC2017-Windows-Windows_10-X86.7z & 7z x *.zip -oC:\Qt\5.14.2\msvc2017 > nul & del *.7z
 
 before_build:
   - set
@@ -46,6 +47,16 @@ after_build:
   - copy /Y "%QTDIR%\bin\Qt5Svg.dll" %COPYDESTDIR%
   - copy /Y "%QTDIR%\bin\Qt5Widgets.dll" %COPYDESTDIR%
   - copy /Y "%QTDIR%\bin\Qt5Xml.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\icudt65.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\icuin65.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\icuuc65.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\libxml2.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\libxslt.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\Qt5WebKit.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\Qt5WebKitWidgets.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\QtWebNetworkProcess.exe" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\QtWebProcess.exe" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\QtWebStorageProcess.exe" %COPYDESTDIR%
   - copy /Y "%VCToolsRedistDir%\vcredist_x86.exe" %COPYDESTDIR%
   - mkdir "%COPYDESTDIR%\audio"
   - copy /Y "%QTDIR%\plugins\audio\qtaudio_wasapi.dll" %COPYDESTDIR%\audio
@@ -113,5 +124,5 @@ test: off
 
 artifacts:
 - path: _output\vacuum
-  name: vacuum_%APPVEYOR_REPO_COMMIT%_win32-msvc2017_qt%QTVER%
+  name: vacuum_%APPVEYOR_REPO_COMMIT%_win32-msvc2019_qt%QTVER%
   type: zip
