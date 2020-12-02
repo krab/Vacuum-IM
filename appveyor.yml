@@ -46,6 +46,7 @@ after_build:
   - copy /Y "%QTDIR%\bin\Qt5Svg.dll" %COPYDESTDIR%
   - copy /Y "%QTDIR%\bin\Qt5Widgets.dll" %COPYDESTDIR%
   - copy /Y "%QTDIR%\bin\Qt5Xml.dll" %COPYDESTDIR%
+# qtwebkit start listing
   - copy /Y "%QTDIR%\bin\icudt65.dll" %COPYDESTDIR%
   - copy /Y "%QTDIR%\bin\icuin65.dll" %COPYDESTDIR%
   - copy /Y "%QTDIR%\bin\icuuc65.dll" %COPYDESTDIR%
@@ -53,9 +54,13 @@ after_build:
   - copy /Y "%QTDIR%\bin\libxslt.dll" %COPYDESTDIR%
   - copy /Y "%QTDIR%\bin\Qt5WebKit.dll" %COPYDESTDIR%
   - copy /Y "%QTDIR%\bin\Qt5WebKitWidgets.dll" %COPYDESTDIR%
-  - copy /Y "%QTDIR%\bin\QtWebNetworkProcess.exe" %COPYDESTDIR%
-  - copy /Y "%QTDIR%\bin\QtWebProcess.exe" %COPYDESTDIR%
-  - copy /Y "%QTDIR%\bin\QtWebStorageProcess.exe" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\Qt5Positioning.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\Qt5Qml.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\Qt5QmlModels.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\Qt5Quick.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\Qt5Sensors.dll" %COPYDESTDIR%
+  - copy /Y "%QTDIR%\bin\Qt5WebChannel.dll" %COPYDESTDIR%
+# qtwebkit end
   - copy /Y "%VCToolsRedistDir%\vcredist_x86.exe" %COPYDESTDIR%
   - mkdir "%COPYDESTDIR%\audio"
   - copy /Y "%QTDIR%\plugins\audio\qtaudio_wasapi.dll" %COPYDESTDIR%\audio
