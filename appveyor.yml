@@ -5,6 +5,7 @@ image: Visual Studio 2019
 branches:
   only:
   - master
+  - krab*
 
 skip_non_tags: true
 
