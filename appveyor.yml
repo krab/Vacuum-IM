@@ -17,7 +17,7 @@ init:
   
 install:
   - curl -O -J -L -s -S http://download.qt.io/official_releases/jom/jom.zip & 7z x *.zip -oC:\jom > nul & del *.zip
-  - curl -O -J -L -s -S https://github.com/qtwebkit/qtwebkit/releases/download/qtwebkit-5.212.0-alpha4/qtwebkit-Windows-Windows_10-MSVC2017-Windows-Windows_10-X86.7z & 7z x *.zip -oC:\Qt\5.14.2\msvc2017 > nul & del *.7z
+  - curl -O -J -L -s -S https://github.com/qtwebkit/qtwebkit/releases/download/qtwebkit-5.212.0-alpha4/qtwebkit-Windows-Windows_10-MSVC2017-Windows-Windows_10-X86.7z & 7z x *.7z -oC:\Qt\5.14.2\msvc2017 > nul & del *.7z
 
 before_build:
   - set
